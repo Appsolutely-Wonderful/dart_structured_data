@@ -1,0 +1,12 @@
+name: dart_recipe_schema
+version: 1.0.0
+description: A collection of classes for representing recipe data defined by schema.org's recipe definition
+homepage: https://github.com/Appsolutely-Wonderful/dart-recipe-schema
+environment:
+  sdk: '>=2.0.0'
+
+dependencies:
+  html: '0.14.0+3'
+
+dev_dependencies:
+  test: '1.15.4'

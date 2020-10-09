@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:dart_recipe_schema/dart_recipe_schema.dart';
+import 'package:dart_recipe_schema/src/restricted_diet.dart';
 import 'package:dart_recipe_schema/src/utils/schema_parser.dart';
 import 'package:html/parser.dart' show parse;
 
@@ -21,6 +22,11 @@ void main() {
     expect(testRecipe.prepTime.inMinutes, 15);
     expect(testRecipe.cookTime.inHours, 1);
     expect(testRecipe.recipeYield, "1 loaf");
-    expect(testRecipe.suitableForDiet, "1 loaf");
+    expect(testRecipe.suitableForDiet, RestrictedDiet.LowFatDiet);
+    expect(testRecipe.nutrition.calories, "240 calories");
+    expect(testRecipe.nutrition.fatContent, "9 grams fat");
+    expect(testRecipe.ingredients[0], "3 or 4 ripe bananas, smashed");
+    expect(testRecipe.ingredients[1], "1 egg");
+    expect(testRecipe.ingredients[2], "3/4 cup of sugar");
   });
 }

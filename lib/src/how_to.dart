@@ -8,7 +8,7 @@ class HowTo extends CreativeWork {
     String description, // Part of Thing
     String prepTime,
   }) : super(name: name, image: image, description: description) {
-    this.prepTime = Iso8601.parseDuration(prepTime);
+    if (prepTime != null) this.prepTime = Iso8601.parseDuration(prepTime);
   }
 
   /// The length of time it takes to prepare the items to be used in

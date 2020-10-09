@@ -5,7 +5,7 @@ import 'package:html/dom.dart';
 /// A collection of functions used for parsing various data formats
 class SchemaParser {
   static Recipe recipeFromMicrodata(Document doc) {
-    HtmlSchemaParser htmlParser = HtmlSchemaParser(doc);
+    RecipeMicrodataParser htmlParser = RecipeMicrodataParser(doc);
     return htmlParser.recipeFromMicrodata();
   }
 }

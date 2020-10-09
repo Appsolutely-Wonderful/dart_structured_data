@@ -7,5 +7,3 @@
 /// it's better than needing to manually set all fields after creating
 /// the object.
 library dart_schema_recipe;
-
-export 'src/recipe.dart';

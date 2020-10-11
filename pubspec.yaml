@@ -1,7 +1,7 @@
-name: dart_recipe_schema
-version: 1.0.0
-description: A collection of classes for representing recipe data defined by schema.org's recipe definition
-homepage: https://github.com/Appsolutely-Wonderful/dart-recipe-schema
+name: structured_data
+version: 1.0.0 # Semantic Versioning
+description: A collection of functions for parsing structured data from web pages
+homepage: https://github.com/Appsolutely-Wonderful/dart_structured_data
 environment:
   sdk: '>=2.0.0'
 

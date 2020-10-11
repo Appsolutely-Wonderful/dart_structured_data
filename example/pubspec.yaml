@@ -5,9 +5,5 @@ homepage: https://github.com/Appsolutely-Wonderful/dart_structured_data
 environment:
   sdk: '>=2.0.0'
 dependencies:
-  structured_data: 0.1.0
+  structured_data: '^0.1.0'
   html: '^0.14.0+3'
-
-dependency_overrides:
-  structured_data:
-    path: ../

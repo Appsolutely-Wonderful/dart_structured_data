@@ -4,7 +4,10 @@ A collection of functions for parsing structured data from web pages
 # Usage
 The library supports microdata, rdfa, and jsonld.
 To parse structured data from a web page:
-    List<StructuredData> data = StructuredDataImporter.importUrl("path/to/website");
+    List<StructuredData> data = await StructuredDataImporter.importUrl("path/to/website");
+
+To parse structured data from an already loaded web page
+    List<StructuredData> data = StructuredDataParser.extract(htmlDocument);
 
 `StructuredData` is a dictionary-like object
     StructuredData someData;

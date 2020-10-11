@@ -6,7 +6,7 @@ import 'package:html/dom.dart';
 import 'package:html/parser.dart';
 
 import '../objects/structured_data.dart';
-import '../utils/generic_parser.dart';
+import '../utils/structured_data_parser.dart';
 
 class StructuredDataImporter {
   StructuredDataImporter();
@@ -21,6 +21,6 @@ class StructuredDataImporter {
       documentString += chunk;
     }
     Document doc = parse(documentString);
-    return GenericParser.extractStructuredData(doc);
+    return StructuredDataParser.extract(doc);
   }
 }

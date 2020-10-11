@@ -4,10 +4,14 @@ microdata, rdfa, and jsonld forms of structured data embedded in a web page.
 
 # Usage
 To parse structured data from a web page:
-`List<StructuredData> data = await StructuredDataImporter.importUrl("path/to/website");`
+```
+List<StructuredData> data = await StructuredDataImporter.importUrl("path/to/website");
+```
 
 To parse structured data from an already loaded web page
-`List<StructuredData> data = StructuredDataParser.extract(htmlDocument);`
+```
+List<StructuredData> data = StructuredDataParser.extract(htmlDocument);
+```
 
 `StructuredData` is a dictionary-like object
 ```

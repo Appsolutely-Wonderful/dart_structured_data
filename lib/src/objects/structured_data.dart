@@ -6,6 +6,7 @@ class StructuredData {
   Map<String, dynamic> _data = Map<String, dynamic>();
 
   dynamic operator [](String key) => _data[key];
+  Iterable<String> get keys => _data.keys;
 
   /// Adds property data to the data map
   /// Handles creating a list out of duplicate properties

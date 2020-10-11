@@ -1,6 +1,6 @@
 import 'package:html/dom.dart';
 
-class HtmlParser {
+class HtmlQuery {
   static List<Element> findItemScopes(Document doc) {
     return doc.querySelectorAll("[itemscope]");
   }

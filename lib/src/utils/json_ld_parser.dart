@@ -1,17 +1,25 @@
 import 'dart:convert';
 
-import 'package:dart_recipe_schema/src/objects/structured_data.dart';
-import 'package:dart_recipe_schema/src/utils/parser.dart';
 import 'package:html/dom.dart';
+
+import '../objects/structured_data.dart';
+import 'html_parser.dart';
 
 class JsonLdParser {
   static List<StructuredData> extractJsonLd(Document document) {
-    var scopes = HtmlParser.findJsonLds(document);
+    var scopes = HtmlQuery.findJsonLds(document);
     List<StructuredData> items = List<StructuredData>();
     scopes.forEach((itemscope) {
       var data = jsonDecode(itemscope.text);
-      StructuredData schema = _extractStructuredData(data);
-      items.add(schema);
+      if (data is List) {
+        data.forEach((element) {
+          StructuredData schema = _extractStructuredData(element);
+          items.add(schema);
+        });
+      } else {
+        StructuredData schema = _extractStructuredData(data);
+        items.add(schema);
+      }
     });
 
     return items;
@@ -19,7 +27,6 @@ class JsonLdParser {
 
   static StructuredData _extractStructuredData(Map<String, dynamic> jsonObj) {
     StructuredData schema = StructuredData(jsonObj["@type"]);
-
     jsonObj.keys.forEach((property) {
       if (!_shouldIgnoreProp(property)) {
         var propertyData = jsonObj[property];

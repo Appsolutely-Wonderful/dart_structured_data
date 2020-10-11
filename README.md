@@ -2,7 +2,7 @@
 A collection of functions for parsing structured data from web pages. The library supports parsing
 microdata, rdfa, and jsonld forms of structured data embedded in a web page.
 
-# Usage
+## Usage
 To parse structured data from a web page:
 ```
 List<StructuredData> data = await StructuredDataImporter.importUrl("path/to/website");
@@ -20,7 +20,7 @@ StructuredData someData;
 someData["property"]
 ```
 
-# Future Improvements
+## Future Improvements
 Eventually I may overlay some wrapper classes for accessing structured data so it's more than
 a glorified map.
 

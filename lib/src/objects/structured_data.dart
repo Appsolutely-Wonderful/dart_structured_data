@@ -1,8 +1,8 @@
 /// Represents a generic schema object
 class StructuredData {
-  StructuredData(this.name);
+  StructuredData(this.schemaType);
 
-  final String name;
+  final String schemaType;
   Map<String, dynamic> _data = Map<String, dynamic>();
 
   dynamic operator [](String key) => _data[key];

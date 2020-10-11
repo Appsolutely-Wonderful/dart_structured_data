@@ -1,0 +1,13 @@
+name: structured_data_example
+version: 0.1.0 # Semantic Versioning
+description: Example for using structured data
+homepage: https://github.com/Appsolutely-Wonderful/dart_structured_data
+environment:
+  sdk: '>=2.0.0'
+dependencies:
+  structured_data: 0.1.0
+  html: '0.14.0+3'
+
+dependency_overrides:
+  structured_data:
+    path: ../

@@ -12,7 +12,7 @@ void main() {
     List<StructuredData> data = RdfaParser.extractRdfa(rdfaMicrodata);
     var testRecipe = data[0];
 
-    expect(testRecipe.name, "Recipe");
+    expect(testRecipe.schemaType, "Recipe");
     expect(testRecipe["name"], "Mom's World Famous Banana Bread");
     expect(testRecipe["author"], "John Smith");
     expect(testRecipe["datePublished"], "2009-05-08");

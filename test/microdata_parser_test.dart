@@ -12,7 +12,7 @@ void main() {
     List<StructuredData> data = MicrodataParser.extractMicrodata(htmlMicrodata);
     var testRecipe = data[0];
 
-    expect(testRecipe.name, "https://schema.org/Recipe");
+    expect(testRecipe.schemaType, "https://schema.org/Recipe");
     expect(testRecipe["name"], "Mom's World Famous Banana Bread");
     expect(testRecipe["author"], "John Smith");
     expect(testRecipe["datePublished"], "2009-05-08");

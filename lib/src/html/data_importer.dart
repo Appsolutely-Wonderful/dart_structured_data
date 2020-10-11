@@ -8,9 +8,10 @@ import 'package:html/parser.dart';
 import '../objects/structured_data.dart';
 import '../utils/structured_data_parser.dart';
 
+/// Contains functions for importing structured data
+/// from remote sources
 class StructuredDataImporter {
-  StructuredDataImporter();
-
+  /// Extracts structured data from the given web page URL
   static Future<List<StructuredData>> importUrl(String url) async {
     HttpClient client = new HttpClient();
     HttpClientRequest req = await client.getUrl(Uri.parse(url));

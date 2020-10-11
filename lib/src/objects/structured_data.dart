@@ -6,10 +6,15 @@ class StructuredData {
   Map<String, dynamic> _data = Map<String, dynamic>();
 
   dynamic operator [](String key) => _data[key];
+
+  /// Retrieves all properties that have been added to this object
   Iterable<String> get keys => _data.keys;
 
-  /// Adds property data to the data map
-  /// Handles creating a list out of duplicate properties
+  /// Adds property data to the structured data
+  /// It can later be accessed through obj["property"]
+  ///
+  /// If a single property is provided multiple times, the property
+  /// becomes a List
   addData(String propertyName, dynamic propertyData) {
     // If the property is being added multiple times, then it becomes
     // a list attribute.

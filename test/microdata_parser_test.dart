@@ -1,7 +1,7 @@
 import 'dart:io';
 
-import 'package:dart_recipe_schema/src/objects/structured_data.dart';
-import 'package:dart_recipe_schema/src/utils/microdata_parser.dart';
+import '../lib/src/objects/structured_data.dart';
+import '../lib/src/utils/microdata_parser.dart';
 import 'package:html/parser.dart';
 import 'package:test/test.dart';
 

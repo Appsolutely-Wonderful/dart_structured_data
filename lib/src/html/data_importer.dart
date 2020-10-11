@@ -8,14 +8,12 @@ import 'package:html/parser.dart';
 import '../objects/structured_data.dart';
 import '../utils/generic_parser.dart';
 
-class DataImporter {
-  DataImporter();
+class StructuredDataImporter {
+  StructuredDataImporter();
 
-  static Future<List<StructuredData>> importUrl() async {
+  static Future<List<StructuredData>> importUrl(String url) async {
     HttpClient client = new HttpClient();
-    print("Importing data");
-    HttpClientRequest req = await client.getUrl(Uri.parse(
-        "https://www.foodnetwork.com/recipes/food-network-kitchen/the-best-pot-roast-7434330"));
+    HttpClientRequest req = await client.getUrl(Uri.parse(url));
     HttpClientResponse response = await req.close();
 
     String documentString = "";

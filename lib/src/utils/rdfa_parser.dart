@@ -7,7 +7,6 @@ class RdfaParser {
     var rdfaTypes = HtmlParser.findRdfaItems(doc);
     List<StructuredData> items = List<StructuredData>();
     rdfaTypes.forEach((item) {
-      print("Extracting structured data");
       StructuredData schema = _extractStructuredData(item);
       items.add(schema);
     });

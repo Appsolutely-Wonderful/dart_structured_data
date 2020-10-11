@@ -12,7 +12,6 @@ class MicrodataParser {
     var scopes = HtmlParser.findItemScopes(document);
     List<StructuredData> items = List<StructuredData>();
     scopes.forEach((itemscope) {
-      print("Extracting structured data");
       StructuredData schema = _extractStructuredData(itemscope);
       items.add(schema);
     });

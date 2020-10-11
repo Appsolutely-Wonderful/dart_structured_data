@@ -9,6 +9,10 @@ class HtmlParser {
     return doc.querySelectorAll("[typeof]");
   }
 
+  static List<Element> findJsonLds(Document doc) {
+    return doc.querySelectorAll("[type=\"application/ld+json\"]");
+  }
+
   static List<Element> getMicrodataProperties(Element el) {
     return el.querySelectorAll("[itemprop]");
   }
@@ -38,7 +42,6 @@ class HtmlParser {
     if (el.attributes.containsKey(attribute)) {
       return el.attributes[attribute];
     } else {
-      print("Did not find attribute $attribute on $el");
       return "";
     }
   }

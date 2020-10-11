@@ -1,5 +1,5 @@
 name: structured_data
-version: 1.0.0 # Semantic Versioning
+version: 0.1.0 # Semantic Versioning
 description: A collection of functions for parsing structured data from web pages
 homepage: https://github.com/Appsolutely-Wonderful/dart_structured_data
 environment:

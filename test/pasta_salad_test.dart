@@ -6,13 +6,17 @@ import 'package:html/parser.dart';
 import 'package:test/test.dart';
 
 void main() {
-  test("Running microdata", () {
+  test("Loading pasta json-ld", () {
     var jsonLdFile =
         File("test/test_inputs/pasta_salad_json_ld.html").readAsStringSync();
     var jsonLdString = parse(jsonLdFile);
     List<StructuredData> data = JsonLdParser.extractJsonLd(jsonLdString);
-    data.forEach((element) {
-      print("Found ${element.schemaType}");
-    });
+    expect(data[0].schemaType, 'Organization');
+    expect(data[1].schemaType, 'WebSite');
+    expect(data[2].schemaType, 'ImageObject');
+    expect(data[3].schemaType, 'WebPage');
+    expect(data[4].schemaType, 'Article');
+    expect(data[5].schemaType, 'Person');
+    expect(data[6].schemaType, 'Recipe');
   });
 }

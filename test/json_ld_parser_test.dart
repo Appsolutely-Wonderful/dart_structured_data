@@ -6,10 +6,11 @@ import 'package:html/parser.dart';
 import 'package:test/test.dart';
 
 void main() {
-  test("Running microdata", () {
+  test("Loading sample json-ld", () {
     var jsonLdFile = File("test/test_inputs/json_ld.html").readAsStringSync();
     var jsonLdString = parse(jsonLdFile);
     List<StructuredData> data = JsonLdParser.extractJsonLd(jsonLdString);
+    print(data);
     var testRecipe = data[0];
 
     expect(testRecipe.schemaType, "Recipe");

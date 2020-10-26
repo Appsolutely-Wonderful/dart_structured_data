@@ -14,10 +14,8 @@ class JsonLdParser {
       if (data is List) {
         items = _extractDataFromList(data);
       } else {
-        if (data is Map) {
-          if (data.containsKey('@graph')) {
-            items = _extractDataFromList(data['@graph']);
-          }
+        if ((data is Map) && data.containsKey('@graph')) {
+          items = _extractDataFromList(data['@graph']);
         } else {
           StructuredData schema = _extractStructuredData(data);
           items.add(schema);

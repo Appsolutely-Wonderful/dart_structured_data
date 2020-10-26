@@ -1,4 +1,5 @@
 import 'package:html/dom.dart';
+import 'package:structured_data/src/utils/parser_helper.dart';
 
 import '../objects/structured_data.dart';
 import 'html_parser.dart';
@@ -16,7 +17,8 @@ class RdfaParser {
   }
 
   static StructuredData _extractStructuredData(Element el) {
-    StructuredData schema = StructuredData(el.attributes["typeof"]);
+    StructuredData schema =
+        StructuredData(ParserHelper.stripProperty(el.attributes["typeof"]));
     // Query all "property" attributes
     var properties = HtmlQuery.getRdfaProperties(el);
 

@@ -12,7 +12,7 @@ void main() {
     List<StructuredData> data = MicrodataParser.extractMicrodata(htmlMicrodata);
     var testRecipe = data[0];
 
-    expect(testRecipe.schemaType, "https://schema.org/Recipe");
+    expect(testRecipe.schemaType, "Recipe");
     expect(testRecipe["name"], "Mom's World Famous Banana Bread");
     expect(testRecipe["author"], "John Smith");
     expect(testRecipe["datePublished"], "2009-05-08");
@@ -32,8 +32,8 @@ void main() {
     expect(testRecipe["recipeInstructions"],
         """Preheat the oven to 350 degrees. Mix in the ingredients in a bowl. Add
     the flour last. Pour the mixture into a loaf pan and bake for one hour.""");
-    expect(testRecipe["interactionStatistic"]["interactionType"],
-        "https://schema.org/CommentAction");
+    expect(
+        testRecipe["interactionStatistic"]["interactionType"], "CommentAction");
     expect(testRecipe["interactionStatistic"]["userInteractionCount"], "140");
   });
 }

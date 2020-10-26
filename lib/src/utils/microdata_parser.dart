@@ -1,4 +1,5 @@
 import 'package:html/dom.dart';
+import 'package:structured_data/src/utils/parser_helper.dart';
 
 import '../objects/structured_data.dart';
 import 'html_parser.dart';
@@ -22,7 +23,8 @@ class MicrodataParser {
   /// Create a structured data object from the given microdata
   /// itemscope
   static StructuredData _extractStructuredData(Element el) {
-    StructuredData schema = StructuredData(el.attributes["itemtype"]);
+    StructuredData schema =
+        StructuredData(ParserHelper.stripProperty(el.attributes["itemtype"]));
     // Query all "itemprop" attributes
     var properties = HtmlQuery.getMicrodataProperties(el);
 

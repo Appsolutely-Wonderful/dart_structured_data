@@ -1,3 +1,7 @@
+# 0.1.3
+
+- When parsing microdata, leading "http(s)://schema.org/" string will be stripped out
+
 # 0.1.2
 
 - Expose parser that can convert Iso8601 duration strings to Duration objects

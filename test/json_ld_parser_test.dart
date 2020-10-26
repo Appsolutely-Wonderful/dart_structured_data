@@ -10,7 +10,6 @@ void main() {
     var jsonLdFile = File("test/test_inputs/json_ld.html").readAsStringSync();
     var jsonLdString = parse(jsonLdFile);
     List<StructuredData> data = JsonLdParser.extractJsonLd(jsonLdString);
-    print(data);
     var testRecipe = data[0];
 
     expect(testRecipe.schemaType, "Recipe");
@@ -31,8 +30,7 @@ void main() {
     expect(testRecipe["recipeIngredient"][2], "3/4 cup of sugar");
     expect(testRecipe["recipeInstructions"],
         """Preheat the oven to 350 degrees. Mix in the ingredients in a bowl. Add the flour last. Pour the mixture into a loaf pan and bake for one hour.""");
-    expect(testRecipe["interactionStatistic"]["interactionType"],
-        "https://schema.org/Comment");
+    expect(testRecipe["interactionStatistic"]["interactionType"], "Comment");
     expect(testRecipe["interactionStatistic"]["userInteractionCount"], "140");
   });
 }

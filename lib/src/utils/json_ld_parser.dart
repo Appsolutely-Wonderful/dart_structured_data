@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:html/dom.dart';
+import 'package:structured_data/src/utils/parser_helper.dart';
 
 import '../objects/structured_data.dart';
 import 'html_parser.dart';
@@ -36,7 +37,8 @@ class JsonLdParser {
   }
 
   static StructuredData _extractStructuredData(Map<String, dynamic> jsonObj) {
-    StructuredData schema = StructuredData(jsonObj["@type"]);
+    StructuredData schema =
+        StructuredData(ParserHelper.stripProperty(jsonObj["@type"]));
     jsonObj.keys.forEach((property) {
       if (!_shouldIgnoreProp(property)) {
         var propertyData = jsonObj[property];
@@ -46,6 +48,9 @@ class JsonLdParser {
           StructuredData structuredProperty =
               _extractStructuredData(propertyData);
           schema.addData(property, structuredProperty);
+        } else if (propertyData is String) {
+          // For a string, strip out any extra data
+          schema.addData(property, ParserHelper.stripProperty(propertyData));
         } else {
           schema.addData(property, propertyData);
         }

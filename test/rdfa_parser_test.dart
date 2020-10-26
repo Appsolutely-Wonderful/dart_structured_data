@@ -32,8 +32,8 @@ void main() {
     expect(testRecipe["recipeInstructions"],
         """Preheat the oven to 350 degrees. Mix in the ingredients in a bowl. Add
     the flour last. Pour the mixture into a loaf pan and bake for one hour.""");
-    expect(testRecipe["interactionStatistic"]["interactionType"],
-        "https://schema.org/CommentAction");
+    expect(
+        testRecipe["interactionStatistic"]["interactionType"], "CommentAction");
     expect(testRecipe["interactionStatistic"]["userInteractionCount"], "140");
   });
 }

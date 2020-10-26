@@ -1,4 +1,5 @@
 import 'package:html/dom.dart';
+import 'package:structured_data/src/utils/parser_helper.dart';
 
 class HtmlQuery {
   static List<Element> findItemScopes(Document doc) {
@@ -21,12 +22,20 @@ class HtmlQuery {
     return el.querySelectorAll("[property]");
   }
 
-  static dynamic extract_property(Element tag) {
-    if (tag?.localName == "meta") return extract_meta_content(tag);
-    if (tag?.localName == "img") return extract_img_src(tag);
-    if (tag?.localName == "span") return extract_text(tag);
-    if (tag?.localName == "link") return extract_link(tag);
-    throw UnimplementedError("Parser for ${tag.localName} is not implemented");
+  static String extract_property(Element tag) {
+    String prop;
+    if (tag?.localName == "meta")
+      prop = extract_meta_content(tag);
+    else if (tag?.localName == "img")
+      prop = extract_img_src(tag);
+    else if (tag?.localName == "span")
+      prop = extract_text(tag);
+    else if (tag?.localName == "link")
+      prop = extract_link(tag);
+    else
+      prop = extract_text(tag);
+
+    return ParserHelper.stripProperty(prop);
   }
 
   static String extract_text(Element span) => span.text;
@@ -36,7 +45,7 @@ class HtmlQuery {
   static String extract_meta_content(Element meta) =>
       extract_attribute(meta, "content");
 
-  static dynamic extract_link(Element el) => extract_attribute(el, "href");
+  static String extract_link(Element el) => extract_attribute(el, "href");
 
   static String extract_attribute(Element el, String attribute) {
     if (el.attributes.containsKey(attribute)) {

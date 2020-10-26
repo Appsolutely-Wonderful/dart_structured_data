@@ -17,8 +17,8 @@ class Iso8601 {
     String time;
     bool hasMatch = false;
     RegExp periodExp =
-        new RegExp(r"P([0-9.,]+Y)?([0-9.,]+M)?([0-9.,]+W)?([0-9.,]+D)?$");
-    RegExp timeExp = new RegExp(r"([0-9.,]+H)?([0-9.,]+M)?([0-9.,]+S)?$");
+        RegExp(r"P([0-9.,]+Y)?([0-9.,]+M)?([0-9.,]+W)?([0-9.,]+D)?$");
+    RegExp timeExp = RegExp(r"([0-9.,]+H)?([0-9.,]+M)?([0-9.,]+S)?$");
     RegExpMatch match;
 
     // Split the duration between period and time

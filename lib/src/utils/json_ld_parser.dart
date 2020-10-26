@@ -12,16 +12,28 @@ class JsonLdParser {
     scopes.forEach((itemscope) {
       var data = jsonDecode(itemscope.text);
       if (data is List) {
-        data.forEach((element) {
-          StructuredData schema = _extractStructuredData(element);
-          items.add(schema);
-        });
+        items = _extractDataFromList(data);
       } else {
-        StructuredData schema = _extractStructuredData(data);
-        items.add(schema);
+        if (data is Map) {
+          if (data.containsKey('@graph')) {
+            items = _extractDataFromList(data['@graph']);
+          }
+        } else {
+          StructuredData schema = _extractStructuredData(data);
+          items.add(schema);
+        }
       }
     });
 
+    return items;
+  }
+
+  static List<StructuredData> _extractDataFromList(List data) {
+    List<StructuredData> items = List<StructuredData>();
+    data.forEach((element) {
+      StructuredData schema = _extractStructuredData(element);
+      items.add(schema);
+    });
     return items;
   }
 

@@ -1,3 +1,8 @@
+# 0.1.4
+
+- When parsing json+ld, this will now parse lists of structured datas into StructuredData objects.
+  previously, the list would just contain the string of undecoded data.
+
 # 0.1.3
 
 - When parsing microdata, leading "http(s)://schema.org/" string will be stripped out

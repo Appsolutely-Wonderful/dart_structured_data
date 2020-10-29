@@ -50,6 +50,6 @@ class StructuredData {
 
   @override
   String toString() {
-    return "$schemaType Data";
+    return "StructuredData<$schemaType>";
   }
 }

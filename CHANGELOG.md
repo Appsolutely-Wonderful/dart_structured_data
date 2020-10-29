@@ -1,3 +1,7 @@
+# 0.1.5
+
+- Fix error where parsing fails if "@type" property is a List<String> in json-ld
+
 # 0.1.4
 
 - When parsing json+ld, this will now parse lists of structured datas into StructuredData objects.

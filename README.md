@@ -2,8 +2,10 @@
 A collection of functions for parsing structured data from web pages. The library supports parsing
 microdata, rdfa, and jsonld forms of structured data embedded in a web page.
 
+## Warning
 This has not been used in any production application yet, so it may be lacking features or have
-some bugs that I haven't encountered yet. Please create issue reports on github to give feedback
+some bugs that I haven't encountered yet. Please create issue reports on github to give feedback.
+I am actively developing another application that uses this and am fixing issues as I find them, often these updates are potential breaking changes. Use at your own risk, but I would really appreciate any support and feedback!
 
 ## Usage
 To parse structured data from a web page:

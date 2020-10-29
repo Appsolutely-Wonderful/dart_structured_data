@@ -47,4 +47,9 @@ class StructuredData {
       return property;
     }
   }
+
+  @override
+  String toString() {
+    return "$schemaType Data";
+  }
 }

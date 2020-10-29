@@ -1,5 +1,3 @@
-import 'package:html/dom.dart';
-
 class ParserHelper {
   static String stripProperty(String schema) {
     if (schema != null) {

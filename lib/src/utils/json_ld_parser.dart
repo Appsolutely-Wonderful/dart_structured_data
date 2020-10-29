@@ -51,6 +51,22 @@ class JsonLdParser {
         } else if (propertyData is String) {
           // For a string, strip out any extra data
           schema.addData(property, ParserHelper.stripProperty(propertyData));
+        } else if (propertyData is List) {
+          // For a list, check the data type first before deciding what to do
+          if (propertyData.length > 0) {
+            if (propertyData[0] is Map) {
+              // For a map, parse all of these into structured datas
+              var dataList = List<StructuredData>();
+              propertyData.forEach((element) {
+                var parsedResult = _extractStructuredData(element);
+                dataList.add(parsedResult);
+              });
+              schema.addData(property, dataList);
+            } else {
+              // For other types, simply add to the data list
+              schema.addData(property, propertyData);
+            }
+          }
         } else {
           schema.addData(property, propertyData);
         }

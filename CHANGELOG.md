@@ -1,3 +1,7 @@
+# 0.1.6+3
+
+- Fixed an error in toJson
+
 # 0.1.6+2
 
 - Update toJson function on StructuredData

@@ -75,6 +75,8 @@ class StructuredData {
         json[key] = _jsonifyList(value);
       } else if (value is Map) {
         json[key] = _jsonifyMap(value);
+      } else {
+        json[key] = value;
       }
     });
     return json;

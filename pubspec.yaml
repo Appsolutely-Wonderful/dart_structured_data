@@ -1,5 +1,5 @@
 name: structured_data
-version: 0.1.6+2
+version: 0.1.6+3
 description: A collection of functions for parsing structured data from web pages or local html documents
 homepage: https://github.com/Appsolutely-Wonderful/dart_structured_data
 environment:

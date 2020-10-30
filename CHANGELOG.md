@@ -1,3 +1,12 @@
+# 0.1.6+1
+
+- Add toJson function to StructuredData
+
+# 0.1.6
+
+- Fix json+ld error where parser stops after seeing the @graph attribute without parsing
+  the rest of the data.
+
 # 0.1.5
 
 - Fix error where parsing fails if "@type" property is a List<String> in json-ld

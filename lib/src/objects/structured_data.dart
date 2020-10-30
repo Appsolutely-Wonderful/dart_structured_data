@@ -52,4 +52,6 @@ class StructuredData {
   String toString() {
     return "StructuredData<$schemaType>";
   }
+
+  Map<String, dynamic> toJson() => _data;
 }

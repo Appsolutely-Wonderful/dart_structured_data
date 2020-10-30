@@ -10,8 +10,7 @@ class ParserHelper {
             "Expected a single schema type, got multiple: $schema");
         return stripProperty(schema[0]);
       }
-    } else {
-      return schema;
     }
+    return schema;
   }
 }

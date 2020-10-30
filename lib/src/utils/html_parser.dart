@@ -24,16 +24,17 @@ class HtmlQuery {
 
   static String extract_property(Element tag) {
     String prop;
-    if (tag?.localName == "meta")
+    if (tag?.localName == "meta") {
       prop = extract_meta_content(tag);
-    else if (tag?.localName == "img")
+    } else if (tag?.localName == "img") {
       prop = extract_img_src(tag);
-    else if (tag?.localName == "span")
+    } else if (tag?.localName == "span") {
       prop = extract_text(tag);
-    else if (tag?.localName == "link")
+    } else if (tag?.localName == "link") {
       prop = extract_link(tag);
-    else
+    } else {
       prop = extract_text(tag);
+    }
 
     return ParserHelper.stripProperty(prop);
   }

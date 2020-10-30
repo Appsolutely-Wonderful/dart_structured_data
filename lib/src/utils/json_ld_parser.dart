@@ -15,16 +15,24 @@ class JsonLdParser {
       if (data is List) {
         items = _extractDataFromList(data);
       } else {
-        if ((data is Map) && data.containsKey('@graph')) {
-          items = _extractDataFromList(data['@graph']);
-        } else {
-          StructuredData schema = _extractStructuredData(data);
-          items.add(schema);
-        }
+        List<StructuredData> schemas = _extractDataFromObject(data);
+        items.addAll(schemas);
       }
     });
 
     return items;
+  }
+
+  static List<StructuredData> _extractDataFromObject(
+      Map<String, dynamic> data) {
+    var results = List<StructuredData>();
+    if (data.containsKey('@graph')) {
+      results.addAll(_extractDataFromList(data['@graph']));
+    }
+    if (data.containsKey('@type')) {
+      results.add(_extractStructuredData(data));
+    }
+    return results;
   }
 
   static List<StructuredData> _extractDataFromList(List data) {
@@ -77,6 +85,9 @@ class JsonLdParser {
   }
 
   static bool _shouldIgnoreProp(String prop) {
+    if (prop.startsWith('@')) {
+      return true;
+    }
     switch (prop) {
       case "@context":
       case "@type":

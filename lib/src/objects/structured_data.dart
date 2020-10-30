@@ -82,7 +82,42 @@ class StructuredData {
     return json;
   }
 
+  dynamic _objectifyMap(Map map) {
+    if (map.containsKey('schemaType')) {
+      return StructuredData.fromJson(map);
+    }
+    return map;
+  }
+
+  List _objectifyList(List list) {
+    return list.map((e) {
+      if (e is Map) {
+        return _objectifyMap(e);
+      }
+      if (e is List) {
+        return _objectifyList(e);
+      }
+      return e;
+    }).toList();
+  }
+
   Map<String, dynamic> toJson() {
-    return _jsonifyMap(_data);
+    var json = _jsonifyMap(_data);
+    json['schemaType'] = schemaType;
+    return json;
+  }
+
+  StructuredData.fromJson(Map<String, dynamic> json)
+      : assert(json.containsKey('schemaType')),
+        schemaType = json['schemaType'] {
+    json.forEach((key, value) {
+      if (value is List) {
+        _data[key] = _objectifyList(value);
+      } else if (value is Map) {
+        _data[key] = _objectifyMap(value);
+      } else {
+        _data[key] = value;
+      }
+    });
   }
 }

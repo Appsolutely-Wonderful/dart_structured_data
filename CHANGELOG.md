@@ -1,3 +1,7 @@
+# 0.1.7
+
+- Add fromJson function since those functions come in pairs
+
 # 0.1.6+3
 
 - Fixed an error in toJson

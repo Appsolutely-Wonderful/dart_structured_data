@@ -1,3 +1,6 @@
+# 0.1.7+1
+- Fixed bug in jsonifying structured data that could potentially cause infite loop
+
 # 0.1.7
 
 - Add fromJson function since those functions come in pairs

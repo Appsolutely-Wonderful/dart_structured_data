@@ -68,7 +68,7 @@ class StructuredData {
 
   Map<String, dynamic> _jsonifyMap(Map<String, dynamic> map) {
     var json = Map<String, dynamic>();
-    _data.forEach((key, value) {
+    map.forEach((key, value) {
       if (value is StructuredData) {
         json[key] = value.toJson();
       } else if (value is List) {

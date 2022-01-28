@@ -35,7 +35,7 @@ class StructuredData {
 
     if (!is_list) {
       var tmp = _data[property];
-      _data[property] = List<dynamic>();
+      _data[property] = [];
       _data[property].add(tmp);
     }
   }
@@ -73,7 +73,7 @@ class StructuredData {
         json[key] = value.toJson();
       } else if (value is List) {
         json[key] = _jsonifyList(value);
-      } else if (value is Map) {
+      } else if (value is Map<String, dynamic>) {
         json[key] = _jsonifyMap(value);
       } else {
         json[key] = value;
@@ -82,7 +82,7 @@ class StructuredData {
     return json;
   }
 
-  dynamic _objectifyMap(Map map) {
+  dynamic _objectifyMap(Map<String, dynamic> map) {
     if (map.containsKey('schemaType')) {
       return StructuredData.fromJson(map);
     }
@@ -91,7 +91,7 @@ class StructuredData {
 
   List _objectifyList(List list) {
     return list.map((e) {
-      if (e is Map) {
+      if (e is Map<String, dynamic>) {
         return _objectifyMap(e);
       }
       if (e is List) {
@@ -113,7 +113,7 @@ class StructuredData {
     json.forEach((key, value) {
       if (value is List) {
         _data[key] = _objectifyList(value);
-      } else if (value is Map) {
+      } else if (value is Map<String, dynamic>) {
         _data[key] = _objectifyMap(value);
       } else {
         _data[key] = value;

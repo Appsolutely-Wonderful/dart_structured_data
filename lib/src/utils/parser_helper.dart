@@ -1,5 +1,5 @@
 class ParserHelper {
-  static String stripProperty(dynamic schema) {
+  static String? stripProperty(dynamic schema) {
     if (schema != null) {
       if (schema is String) {
         String stripped = schema.replaceFirst("http://schema.org/", "");

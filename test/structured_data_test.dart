@@ -1,5 +1,4 @@
 import 'dart:io';
-import 'dart:math';
 
 import 'package:html/parser.dart';
 import 'package:structured_data/src/utils/microdata_parser.dart';

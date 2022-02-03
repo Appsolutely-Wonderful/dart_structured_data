@@ -4,7 +4,7 @@ class Iso8601 {
   ///
   /// Returns a valid Duration if the string can be parsed. Otherwise returns
   /// null.
-  static Duration parseDuration(String duration) {
+  static Duration? parseDuration(String duration) {
     // ISO 8601 defines a duration as PnYnMnDTnHnMnS
     double years = 0;
     double months = 0;
@@ -14,12 +14,12 @@ class Iso8601 {
     double minutes = 0;
     double seconds = 0;
     String period;
-    String time;
+    String? time;
     bool hasMatch = false;
     RegExp periodExp =
         RegExp(r"P([0-9.,]+Y)?([0-9.,]+M)?([0-9.,]+W)?([0-9.,]+D)?$");
     RegExp timeExp = RegExp(r"([0-9.,]+H)?([0-9.,]+M)?([0-9.,]+S)?$");
-    RegExpMatch match;
+    RegExpMatch? match;
 
     // Split the duration between period and time
     List<String> splitTime = duration.split("T");
@@ -65,7 +65,7 @@ class Iso8601 {
   /// Parses a regex map from an expected format into a double
   ///
   /// Expected format in regex is "[0-9,.]+X" where X can be anything
-  static double _parseMatchToDouble(String match) {
+  static double _parseMatchToDouble(String? match) {
     if (match == null) {
       return 0;
     }

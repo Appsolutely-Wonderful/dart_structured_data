@@ -9,7 +9,7 @@ import 'html_parser.dart';
 class JsonLdParser {
   static List<StructuredData> extractJsonLd(Document document) {
     var scopes = HtmlQuery.findJsonLds(document);
-    List<StructuredData> items = List<StructuredData>();
+    List<StructuredData> items = [];
     scopes.forEach((itemscope) {
       var data = jsonDecode(itemscope.text);
       if (data is List) {
@@ -25,7 +25,7 @@ class JsonLdParser {
 
   static List<StructuredData> _extractDataFromObject(
       Map<String, dynamic> data) {
-    var results = List<StructuredData>();
+    final List<StructuredData> results = [];
     if (data.containsKey('@graph')) {
       results.addAll(_extractDataFromList(data['@graph']));
     }
@@ -36,7 +36,7 @@ class JsonLdParser {
   }
 
   static List<StructuredData> _extractDataFromList(List data) {
-    List<StructuredData> items = List<StructuredData>();
+    final List<StructuredData> items = [];
     data.forEach((element) {
       StructuredData schema = _extractStructuredData(element);
       items.add(schema);
@@ -46,13 +46,13 @@ class JsonLdParser {
 
   static StructuredData _extractStructuredData(Map<String, dynamic> jsonObj) {
     StructuredData schema =
-        StructuredData(ParserHelper.stripProperty(jsonObj["@type"]));
+        StructuredData(ParserHelper.stripProperty(jsonObj["@type"]) ?? "");
     jsonObj.keys.forEach((property) {
       if (!_shouldIgnoreProp(property)) {
         var propertyData = jsonObj[property];
 
         // If it's a map, then parse it as a structured data object
-        if (propertyData is Map) {
+        if (propertyData is Map<String, dynamic>) {
           StructuredData structuredProperty =
               _extractStructuredData(propertyData);
           schema.addData(property, structuredProperty);
@@ -64,7 +64,7 @@ class JsonLdParser {
           if (propertyData.length > 0) {
             if (propertyData[0] is Map) {
               // For a map, parse all of these into structured datas
-              var dataList = List<StructuredData>();
+              final List<StructuredData> dataList = [];
               propertyData.forEach((element) {
                 var parsedResult = _extractStructuredData(element);
                 dataList.add(parsedResult);

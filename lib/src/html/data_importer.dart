@@ -12,7 +12,7 @@ import '../utils/structured_data_parser.dart';
 class StructuredDataImporter {
   /// Extracts structured data from the given web page URL
   static Future<List<StructuredData>> importUrl(String url) async {
-    var response = await http.get(url);
+    var response = await http.get(Uri.parse(url));
     Document doc = parse(response.body);
     return StructuredDataParser.extract(doc);
   }

@@ -11,7 +11,7 @@ class MicrodataParser {
   /// in the provided document
   static List<StructuredData> extractMicrodata(Document document) {
     var scopes = HtmlQuery.findItemScopes(document);
-    List<StructuredData> items = List<StructuredData>();
+    final List<StructuredData> items = [];
     scopes.forEach((itemscope) {
       StructuredData schema = _extractStructuredData(itemscope);
       items.add(schema);
@@ -23,8 +23,8 @@ class MicrodataParser {
   /// Create a structured data object from the given microdata
   /// itemscope
   static StructuredData _extractStructuredData(Element el) {
-    StructuredData schema =
-        StructuredData(ParserHelper.stripProperty(el.attributes["itemtype"]));
+    StructuredData schema = StructuredData(
+        ParserHelper.stripProperty(el.attributes["itemtype"]) ?? "");
     // Query all "itemprop" attributes
     var properties = HtmlQuery.getMicrodataProperties(el);
 

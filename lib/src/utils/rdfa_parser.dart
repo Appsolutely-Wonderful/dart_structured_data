@@ -7,7 +7,7 @@ import 'html_parser.dart';
 class RdfaParser {
   static List<StructuredData> extractRdfa(Document doc) {
     var rdfaTypes = HtmlQuery.findRdfaItems(doc);
-    List<StructuredData> items = List<StructuredData>();
+    final List<StructuredData> items = [];
     rdfaTypes.forEach((item) {
       StructuredData schema = _extractStructuredData(item);
       items.add(schema);
@@ -17,8 +17,8 @@ class RdfaParser {
   }
 
   static StructuredData _extractStructuredData(Element el) {
-    StructuredData schema =
-        StructuredData(ParserHelper.stripProperty(el.attributes["typeof"]));
+    StructuredData schema = StructuredData(
+        ParserHelper.stripProperty(el.attributes["typeof"]) ?? "");
     // Query all "property" attributes
     var properties = HtmlQuery.getRdfaProperties(el);
 

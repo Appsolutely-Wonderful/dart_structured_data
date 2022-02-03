@@ -6,8 +6,6 @@ class ParserHelper {
         stripped = stripped.replaceFirst("https://schema.org/", "");
         return stripped;
       } else if (schema is List) {
-        assert(schema.length == 1,
-            "Expected a single schema type, got multiple: $schema");
         return stripProperty(schema[0]);
       }
     }
